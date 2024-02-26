@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head></head>
+
+<body>
+
+   <script>
+      const word0 = "Whats app";
+      const word0Translation = "Как дела";
+
+      const word1 = "Bye";
+      const word1Translation = "Пока";
+
+      const word2 = "Programmer";
+      const word2Translation = "Программист";
+
+      const wordsCount = 3;
+
+      const finishSuccessMessage = "Молодец! Хороший результат!";
+      const finishUnSuccessMessage = "Молодец! Но постарайся лучше";
+
+      const correctAnswersMinPercent = 50;
+
+      let correctAnswersCount = 0;
+
+      //--------------------------
+
+      const userAnswer0 = prompt(word0);  //0
+      alert(userAnswer0 === word0Translation);
+      if (userAnswer0 === word0Translation) {
+         correctAnswersCount = correctAnswersCount + 1;
+      }
+
+      const userAnswer1 = prompt(word1);  //0
+      alert(userAnswer1 === word1Translation);
+      if (userAnswer1 === word1Translation) {
+         correctAnswersCount = correctAnswersCount + 1;
+      }
+
+      const userAnswer2 = prompt(word2);  //0
+      alert(userAnswer2 === word2Translation);
+      if (userAnswer2 === word2Translation) {
+         correctAnswersCount = correctAnswersCount + 1;
+      }
+
+      const userCorrectAnswersPercent = correctAnswersCount * 100;
+
+      if (userCorrectAnswersPercent > correctAnswersMinPercent) {
+         alert(finishUnSuccessMessage);
+      } else {
+         alert(finishSuccessMessage);
+      }
+
+
+   </script>
+
+</body>
+
+</html>
