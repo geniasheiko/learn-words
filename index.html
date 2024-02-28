@@ -6,28 +6,57 @@
 <body>
 
    <script>
-
-      const word0 = {
-         original: "Whats app",
-         translation: "Как дела"
+      //---------------function
+      function showHelloMessage(_notificationMessages) {
+         alert(notificationMessages.start.hello)
       }
 
-      const word1 = {
-         original: "Bye",
-         translation: "Пока"
+      function startTraining(_words, _result) {
+         for (let i = 0; i < _words.length; i++) {
+            let userAnswer = prompt(_words[i].original);
+            alert(userAnswer === _words[i].translation);
+            if (userAnswer === _words[i].translation) {
+               _result.correctAnswersCount = _result.correctAnswersCount + 1;
+            }
+         }
       }
 
-      const word2 = {
-         original: "Programmer",
-         translation: "Программист"
+      function getPercentage(_result, _words) {
+         return _result.correctAnswersCount / _words.length * 100;
       }
 
+      function showResult(_result, _words, _settings, _notificationMessages) {
+         const userCorrectAnswersPercent = getPercentage(result, words);
+         if (userCorrectAnswersPercent > settings.correctAnswersMinPercent) {
+            alert(notificationMessages.result.finishSuccess);
+         } else {
+            alert(notificationMessages.result.finishUnSuccess);
+         }
 
-      const wordsCount = 3;
+      }
+
+      //---------------data
+
+      const words = [
+         {
+            original: "Whats app",
+            translation: "Как дела"
+         },
+
+         {
+            original: "Bye",
+            translation: "Пока"
+         },
+
+         {
+            original: "Programmer",
+            translation: "Программист"
+         }
+      ]
 
       const notificationMessages = {
          start: {
-            hello: "Hello man. You can learn English. Good Luck!"
+            hello: "Привет, Карамзелька. Ты сможешь выучить немецкий!!! Нужно вводить перевод слова."
          },
          result: {
             finishSuccess: "Молодец! Хороший результат!",
@@ -43,35 +72,11 @@
          correctAnswersCount: 0
       }
 
-      //--------------------------
+      //---------------main
 
-      alert(notificationMessages.start.hello)
-
-      const userAnswer0 = prompt(word0.original);  //0
-      alert(userAnswer0 === word0.translation);
-      if (userAnswer0 === word0.translation) {
-         result.correctAnswersCount = result.correctAnswersCount + 1;
-      }
-
-      const userAnswer1 = prompt(word1.original);  //0
-      alert(userAnswer1 === word1.translation);
-      if (userAnswer1 === word1.translation) {
-         result.correctAnswersCount = result.correctAnswersCount + 1;
-      }
-
-      const userAnswer2 = prompt(word2.original);  //0
-      alert(userAnswer2 === word2.translation);
-      if (userAnswer2 === word2.translation) {
-         result.correctAnswersCount = result.correctAnswersCount + 1;
-      }
-
-      const userCorrectAnswersPercent = result.correctAnswersCount / wordsCount * 100;
-
-      if (userCorrectAnswersPercent > settings.correctAnswersMinPercent) {
-         alert(notificationMessages.result.finishSuccess);
-      } else {
-         alert(notificationMessages.result.finishUnSuccess);
-      }
+      showHelloMessage(notificationMessages);
+      startTraining(words, result);
+      showResult(result, words, settings, notificationMessages);
 
 
    </script>
